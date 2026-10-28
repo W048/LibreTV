@@ -142,6 +142,21 @@ body {
   color: transparent;
 }
 
+/* 首页入场动画：内容淡入 + 轻微上移，仅首页首屏挂载时播放一次 */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out both;
+}
+/* 尊重系统「减少动态效果」偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up {
+    animation: none;
+  }
+}
+
 /* LIVE 呼吸红点（直播页标识） */
 .live-dot {
   width: 8px;

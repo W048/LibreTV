@@ -181,7 +181,14 @@ function HomeContent() {
         )}
 
         {/* 搜索区 */}
-        <section className={cn('flex flex-col items-center', urlQuery ? 'mb-6' : 'mt-8 mb-8')}>
+        <section
+          className={cn(
+            'flex flex-col items-center',
+            urlQuery ? 'mb-6' : 'mt-8 mb-8',
+            // 首页首屏入场动画：淡入 + 上移，仅首次挂载播放一次
+            !urlQuery && 'animate-fade-in-up'
+          )}
+        >
           {!urlQuery && (
             <header className="text-center mb-6">
               <h1 className="text-4xl sm:text-5xl font-bold brand-gradient">LibreTV</h1>
@@ -366,12 +373,14 @@ function HomeContent() {
 
         {/* 首页推荐（有搜索时隐藏） */}
         {!urlQuery && (
-          <RecommendSection
-            onPick={(title) => {
-              setInput(title);
-              runSearch(title);
-            }}
-          />
+          <div className="animate-fade-in-up" style={{ animationDelay: '120ms' }}>
+            <RecommendSection
+              onPick={(title) => {
+                setInput(title);
+                runSearch(title);
+              }}
+            />
+          </div>
         )}
       </main>
 

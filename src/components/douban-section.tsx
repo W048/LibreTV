@@ -25,7 +25,7 @@ export function RecommendSection({ onPick }: { onPick: (title: string) => void }
 
 /**
  * 豆瓣推荐：影视切换 + 标签筛选。
- * 一次性渲染全部条目：数据本就一次拉全（50 条），卡片图片又是 lazy 加载，
+ * 一次性渲染全部条目：数据本就一次拉全（100 条），卡片图片又是 lazy 加载，
  * 视口外的图不会请求，因此不需要「加载更多」这类本地切片分页来打断浏览。
  */
 function DoubanView({ onPick }: { onPick: (title: string) => void }) {
@@ -34,7 +34,7 @@ function DoubanView({ onPick }: { onPick: (title: string) => void }) {
 
   const query = useQuery({
     queryKey: ['douban', type, tag],
-    queryFn: ({ signal }) => api.douban(type, tag, 0, 50, signal),
+    queryFn: ({ signal }) => api.douban(type, tag, 0, 100, signal),
   });
 
   const tags = type === 'movie' ? MOVIE_TAGS : TV_TAGS;

@@ -13,7 +13,8 @@ export async function GET(req: Request) {
   const type = url.searchParams.get('type') === 'tv' ? 'tv' : 'movie';
   const tag = (url.searchParams.get('tag') || '热门').slice(0, 20);
   const pageStart = Math.max(0, parseInt(url.searchParams.get('pageStart') || '0', 10) || 0);
-  const pageSize = Math.min(50, Math.max(1, parseInt(url.searchParams.get('pageSize') || '25', 10) || 25));
+  // 上限 100：豆瓣 j/search_subjects 实测 page_limit=100 返回 100 条，满足首页「100 个资源」需求
+  const pageSize = Math.min(100, Math.max(1, parseInt(url.searchParams.get('pageSize') || '25', 10) || 25));
 
   try {
     const items = await fetchDoubanRecommend(type, tag, pageStart, pageSize);

@@ -332,7 +332,10 @@ export const useAppStore = create<AppState>()(
       yellowFilter: true,
       adFilter: true,
       doubanEnabled: true,
-      recommendSource: 'hot-list',
+      // 默认按热度推荐：豆瓣「热门」标签（sort=recommend，热度排序）。
+      // 影视热榜（hot-list）每榜仅 10 条，凑不足首页 100 条的展示量，
+      // 故出厂默认从 hot-list 切到 douban，仍可在设置中切换。
+      recommendSource: 'douban',
       recommendSourceTouched: false,
       autoplayNext: true,
       skipMarks: {},
