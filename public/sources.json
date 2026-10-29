@@ -33,6 +33,7 @@
     { "name": "电影天堂", "url": "https://caiji.dyttzyapi.com/api.php/provide/vod" }
   ],
   "liveSources": [
-    { "name": "范明明IPTV", "url": "https://live.fanmingming.com/tv/m3u/ipv6.m3u" }
+    { "name": "BurningC4中文台", "url": "https://raw.githubusercontent.com/BurningC4/Chinese-IPTV/master/TV-IPV4.m3u" },
+    { "name": "YanG聚合源", "url": "https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u" }
   ]
 }
